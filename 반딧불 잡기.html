@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>반딧불 잡기</title>
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#14123a;--bg2:#2a1f5c;--fly:#ffc857;--bug:#ff5d73;--ink:#f3efff;--glass:rgba(200,220,255,.18);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14123a;--bg2:#2a1f5c}}
+:root[data-theme="dark"]{--bg:#14123a;--bg2:#2a1f5c}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+html,body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:"Jua","Apple SD Gothic Neo","Malgun Gothic",sans-serif;overflow:hidden;touch-action:none;user-select:none}
+#wrap{height:100%;max-width:520px;margin:0 auto;display:flex;flex-direction:column;position:relative}
+#hud{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;font-size:20px}
+#hud b{font-size:26px;color:var(--fly);font-weight:400}
+#lives{letter-spacing:4px}
+#stage{flex:1;position:relative;min-height:0}
+canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+#ov{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;background:rgba(20,18,58,.78)}
+#ov h1{font-size:44px;font-weight:400;margin:0 0 8px;color:var(--fly)}
+#ov p{margin:4px 0;font-size:18px;line-height:1.5;max-width:320px}
+#ov .big{font-size:28px}
+button{margin-top:20px;font:inherit;font-size:22px;padding:12px 32px;border:0;border-radius:999px;background:var(--fly);color:#2a1f5c;cursor:pointer}
+button:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.hide{display:none!important}
+</style>
+</head>
+<body>
+<div id="wrap">
+  <div id="hud"><span>점수 <b id="sc">0</b></span><span id="cb"></span><span id="lives"></span></div>
+  <div id="stage">
+    <canvas id="c"></canvas>
+    <div id="ov">
+      <h1 id="t">반딧불 잡기</h1>
+      <p id="d">병 안에 반딧불을 모으세요.<br>붉은 말벌은 피해야 해요.</p>
+      <p>마우스·손가락으로 움직이거나 ← → 키를 쓰세요.</p>
+      <p id="best"></p>
+      <button id="go">시작하기</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+var cv=document.getElementById('c'),ctx=cv.getContext('2d');
+var sc=document.getElementById('sc'),cb=document.getElementById('cb'),lv=document.getElementById('lives');
+var ov=document.getElementById('ov'),go=document.getElementById('go'),tt=document.getElementById('t'),dd=document.getElementById('d'),bs=document.getElementById('best');
+var W=0,H=0,dpr=1,stars=[];
+var best=0;try{best=+localStorage.getItem('ff-best')||0}catch(e){}
+var S={run:false,score:0,lives:3,combo:0,items:[],pops:[],t:0,spawn:0,px:0,tx:0,keys:{}};
+function resize(){
+  var r=cv.getBoundingClientRect();dpr=window.devicePixelRatio||1;
+  W=r.width;H=r.height;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
+  stars=[];for(var i=0;i<50;i++)stars.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.4+.3,p:Math.random()*6});
+  if(!S.px){S.px=S.tx=W/2}
+}
+window.addEventListener('resize',resize);
+function setLives(){var s='';for(var i=0;i<3;i++)s+=i<S.lives?'●':'○';lv.textContent=s;lv.style.color='var(--bug)'}
+function start(){
+  S.run=true;S.score=0;S.lives=3;S.combo=0;S.items=[];S.pops=[];S.t=0;S.spawn=0;S.px=S.tx=W/2;
+  sc.textContent=0;cb.textContent='';setLives();ov.classList.add('hide');
+}
+function end(){
+  S.run=false;var nb=S.score>best;
+  if(nb){best=S.score;try{localStorage.setItem('ff-best',best)}catch(e){}}
+  tt.textContent='게임 끝';
+  dd.innerHTML='<span class="big">'+S.score+'점</span>'+(nb?'<br>최고 기록이에요!':'');
+  bs.textContent='최고 기록 '+best+'점';go.textContent='다시 하기';ov.classList.remove('hide');go.focus();
+}
+function spawn(){
+  var lvl=Math.min(S.t/60,1);
+  var bug=Math.random()<.22+.18*lvl;
+  S.items.push({x:24+Math.random()*(W-48),y:-20,vy:(90+Math.random()*50)*(1+lvl*1.1)*(bug?1.1:1),r:bug?13:10,bug:bug,ph:Math.random()*6,sw:20+Math.random()*30});
+}
+function update(dt){
+  S.t+=dt;
+  var sp=420*dt;
+  if(S.keys.ArrowLeft||S.keys.a)S.tx-=sp;
+  if(S.keys.ArrowRight||S.keys.d)S.tx+=sp;
+  S.tx=Math.max(40,Math.min(W-40,S.tx));
+  S.px+=(S.tx-S.px)*Math.min(1,dt*14);
+  S.spawn-=dt;
+  if(S.spawn<=0){spawn();S.spawn=Math.max(.35,.95-S.t*.01)}
+  var py=H-70;
+  for(var i=S.items.length-1;i>=0;i--){
+    var it=S.items[i];it.y+=it.vy*dt;it.ph+=dt*3;
+    var x=it.x+Math.sin(it.ph)*it.sw;it.dx=x;
+    if(it.y>py-24&&it.y<py+30&&Math.abs(x-S.px)<38){
+      S.items.splice(i,1);
+      if(it.bug){S.lives--;S.combo=0;cb.textContent='';setLives();S.pops.push({x:x,y:py-20,t:0,s:'아야!',c:'#ff5d73'});if(S.lives<=0)end()}
+      else{S.combo++;var m=Math.min(5,1+Math.floor(S.combo/5));S.score+=10*m;sc.textContent=S.score;
+        cb.textContent=S.combo>=5?'콤보 x'+m:'';S.pops.push({x:x,y:py-20,t:0,s:'+'+10*m,c:'#ffc857'})}
+    }else if(it.y>H+30){
+      S.items.splice(i,1);if(!it.bug&&S.combo){S.combo=0;cb.textContent=''}
+    }
+  }
+  for(var j=S.pops.length-1;j>=0;j--){S.pops[j].t+=dt;if(S.pops[j].t>.7)S.pops.splice(j,1)}
+}
+function draw(now){
+  var g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,'#14123a');g.addColorStop(1,'#2a1f5c');
+  ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+  stars.forEach(function(s){ctx.globalAlpha=.4+.4*Math.sin(now/700+s.p);ctx.fillStyle='#f3efff';ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,7);ctx.fill()});
+  ctx.globalAlpha=1;
+  ctx.fillStyle='#0d0b26';ctx.beginPath();ctx.moveTo(0,H);
+  for(var x=0;x<=W;x+=20)ctx.lineTo(x,H-18-8*Math.sin(x/37)-5*Math.sin(x/13));
+  ctx.lineTo(W,H);ctx.fill();
+  S.items.forEach(function(it){
+    var x=it.dx!==undefined?it.dx:it.x,y=it.y;
+    if(it.bug){
+      ctx.fillStyle='#ff5d73';ctx.beginPath();ctx.ellipse(x,y,it.r*.8,it.r,0,0,7);ctx.fill();
+      ctx.fillStyle='#14123a';ctx.fillRect(x-it.r*.8,y-3,it.r*1.6,3);ctx.fillRect(x-it.r*.7,y+4,it.r*1.4,3);
+      ctx.fillStyle='rgba(255,255,255,.55)';var f=Math.sin(now/40)*3;
+      ctx.beginPath();ctx.ellipse(x-it.r,y-it.r*.6,7,3+f,-.5,0,7);ctx.ellipse(x+it.r,y-it.r*.6,7,3+f,.5,0,7);ctx.fill();
+    }else{
+      var gl=ctx.createRadialGradient(x,y,0,x,y,it.r*3);gl.addColorStop(0,'rgba(255,200,87,.9)');gl.addColorStop(1,'rgba(255,200,87,0)');
+      ctx.fillStyle=gl;ctx.beginPath();ctx.arc(x,y,it.r*3,0,7);ctx.fill();
+      ctx.fillStyle='#fff3c4';ctx.beginPath();ctx.arc(x,y,it.r*.5,0,7);ctx.fill();
+    }
+  });
+  var py=H-70,px=S.px;
+  ctx.fillStyle='rgba(200,220,255,.16)';ctx.strokeStyle='rgba(220,235,255,.8)';ctx.lineWidth=3;
+  ctx.beginPath();ctx.moveTo(px-34,py-24);ctx.lineTo(px-34,py+22);ctx.quadraticCurveTo(px-34,py+34,px-22,py+34);
+  ctx.lineTo(px+22,py+34);ctx.quadraticCurveTo(px+34,py+34,px+34,py+22);ctx.lineTo(px+34,py-24);ctx.fill();ctx.stroke();
+  ctx.strokeStyle='#c9a66b';ctx.lineWidth=6;ctx.beginPath();ctx.moveTo(px-38,py-28);ctx.lineTo(px+38,py-28);ctx.stroke();
+  var n=Math.min(8,Math.floor(S.combo/2));
+  for(var k=0;k<n;k++){var fx=px-18+(k%4)*12,fy=py+26-Math.floor(k/4)*14;
+    ctx.fillStyle='rgba(255,200,87,.35)';ctx.beginPath();ctx.arc(fx,fy,8,0,7);ctx.fill();
+    ctx.fillStyle='#fff3c4';ctx.beginPath();ctx.arc(fx,fy,2.5,0,7);ctx.fill()}
+  S.pops.forEach(function(p){ctx.globalAlpha=1-p.t/.7;ctx.fillStyle=p.c;ctx.font='22px Jua,sans-serif';ctx.textAlign='center';ctx.fillText(p.s,p.x,p.y-p.t*50)});
+  ctx.globalAlpha=1;
+}
+var last=0;
+function loop(now){
+  var dt=Math.min(.05,(now-last)/1000||0);last=now;
+  if(S.run)update(dt);
+  draw(now);requestAnimationFrame(loop);
+}
+function ptr(e){var r=cv.getBoundingClientRect();S.tx=e.clientX-r.left}
+cv.addEventListener('pointermove',ptr);cv.addEventListener('pointerdown',ptr);
+window.addEventListener('keydown',function(e){S.keys[e.key]=true;if(e.key.indexOf('Arrow')===0)e.preventDefault();
+  if((e.key==='Enter'||e.key===' ')&&!S.run&&document.activeElement!==go){start()}});
+window.addEventListener('keyup',function(e){S.keys[e.key]=false});
+go.addEventListener('click',start);
+bs.textContent=best?'최고 기록 '+best+'점':'';
+resize();requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>
