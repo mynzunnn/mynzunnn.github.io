@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <rect width="1200" height="630" fill="#f7f5ef"/>
+
+  <!-- 상단 킥커 -->
+  <text x="80" y="120" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="900" letter-spacing="4" fill="#526b50">HELLO, NICE TO MEET YOU!</text>
+
+  <!-- 이름 (하이라이트 포함) -->
+  <text x="76" y="270" font-family="Inter, Pretendard, system-ui, sans-serif" font-size="92" font-weight="950" letter-spacing="-4" fill="#25251f">안녕하세요, 저는</text>
+  <rect x="74" y="300" width="430" height="34" fill="#d7f36a" transform="rotate(-1.5 289 317)"/>
+  <text x="76" y="340" font-family="Inter, Pretendard, system-ui, sans-serif" font-size="92" font-weight="950" letter-spacing="-4" fill="#25251f">조민준입니다.</text>
+
+  <!-- 부제 -->
+  <text x="80" y="430" font-family="Inter, Pretendard, system-ui, sans-serif" font-size="30" font-weight="700" fill="#77776c">국민대학교 경영정보학부 · 여행을 좋아하는 학생</text>
+  <text x="80" y="476" font-family="Inter, Pretendard, system-ui, sans-serif" font-size="26" font-weight="500" fill="#77776c">새로운 경험을 쌓아가는 이야기를 소개해요.</text>
+
+  <!-- 우측 장식: sun sticker -->
+  <circle cx="1050" cy="170" r="80" fill="#d7f36a"/>
+  <text x="1050" y="200" font-family="Inter, system-ui, sans-serif" font-size="64" font-weight="900" text-anchor="middle" fill="#526b50" transform="rotate(12 1050 180)">✳</text>
+
+  <!-- 우측 장식: 프로필 카드 -->
+  <rect x="940" y="300" width="180" height="220" rx="28" fill="#c7dce9"/>
+  <circle cx="1030" cy="380" r="55" fill="#f1b9a8"/>
+  <rect x="985" y="430" width="90" height="70" rx="36" fill="#526b50"/>
+
+  <!-- 하단 바 -->
+  <text x="80" y="580" font-family="Inter, system-ui, sans-serif" font-size="20" font-weight="800" fill="#77776c">mynzunnn.github.io</text>
+</svg>
