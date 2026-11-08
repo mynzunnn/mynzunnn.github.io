@@ -39,10 +39,13 @@ exports.handler = async function (event) {
       .single();
 
     if (error) {
-      return json(500, { error: "insert_failed" });
+      // 실제 Supabase 에러를 로그에 남긴다(원인 파악용). 응답엔 상세를 노출하지 않는다.
+      console.error("guestbook insert error:", error.message, error.code, error.details, error.hint);
+      return json(500, { error: "insert_failed", code: error.code || null });
     }
     return json(201, { entry: data });
   } catch (e) {
+    console.error("guestbook create unexpected:", e && e.message);
     return json(500, { error: "unexpected" });
   }
 };

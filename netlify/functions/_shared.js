@@ -19,6 +19,12 @@ function getAdminClient() {
   const url = process.env.SUPABASE_URL;
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
   if (!url || !serviceKey) {
+    // 어떤 변수가 비었는지 로그로 남긴다(값은 찍지 않음).
+    console.error(
+      "server_not_configured:",
+      "SUPABASE_URL=" + (url ? "set" : "MISSING"),
+      "SUPABASE_SERVICE_ROLE_KEY=" + (serviceKey ? "set" : "MISSING")
+    );
     throw new Error("server_not_configured");
   }
   return createClient(url, serviceKey, {

@@ -33,7 +33,8 @@ exports.handler = async function (event) {
         .range(from, to);
 
       if (error) {
-        return json(500, { error: "query_failed" });
+        console.error("guestbook list error:", error.message, error.code, error.details, error.hint);
+        return json(500, { error: "query_failed", code: error.code || null });
       }
       if (!data || data.length === 0) break;
       all.push(...data);
