@@ -1,0 +1,9 @@
+{
+  "name": "mynzunnn-guestbook",
+  "version": "1.0.0",
+  "private": true,
+  "description": "여행지 추천 방명록 - Netlify Functions + Supabase",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.0"
+  }
+}

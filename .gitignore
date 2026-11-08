@@ -1,0 +1,19 @@
+# 비밀 / 환경 변수 (절대 커밋 금지)
+.env
+.env.*
+!.env.example
+*.env
+
+# Node 산출물
+node_modules/
+
+# Netlify 로컬 산출물
+.netlify/
+
+# OS / 에디터 잡파일
+.DS_Store
+Thumbs.db
+
+# Kiro 설정 및 개인 프로젝트 기록(공개 저장소에 올리지 않음)
+.kiro/
+docs/

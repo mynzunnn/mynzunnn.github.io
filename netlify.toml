@@ -1,0 +1,35 @@
+# Netlify 배포 설정
+# - 이 사이트는 빌드가 없는 순수 정적 HTML이다. 그래서 build 명령을 두지 않는다.
+# - publish 디렉터리는 현재 구조를 보존하기 위해 저장소 루트(".")로 둔다.
+# - 공개 출력에서 제외할 항목은 .netlifyignore 로 관리한다.
+# - 서버리스 함수는 netlify/functions 에 두며, 정적 공개 폴더에는 복사하지 않는다.
+
+[build]
+  # 빌드 단계 없음(정적 사이트). 공개할 파일은 publish 폴더에서 그대로 서빙된다.
+  publish = "."
+  # 함수 소스 폴더. Netlify가 이 폴더를 별도로 번들링하며, publish 출력에 포함되지 않는다.
+  functions = "netlify/functions"
+
+# 함수 런타임 설정
+[functions]
+  node_bundler = "esbuild"
+
+# 같은 사이트의 API 경로를 함수로 연결한다.
+# 브라우저는 /api/guestbook-list, /api/guestbook-create 로만 요청한다.
+[[redirects]]
+  from = "/api/guestbook-list"
+  to = "/.netlify/functions/guestbook-list"
+  status = 200
+
+[[redirects]]
+  from = "/api/guestbook-create"
+  to = "/.netlify/functions/guestbook-create"
+  status = 200
+
+# 기본 보안 헤더 (정적 자산 대상)
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"

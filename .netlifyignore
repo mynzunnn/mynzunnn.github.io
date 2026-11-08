@@ -1,0 +1,26 @@
+# 공개 배포 출력에서 제외할 항목
+# 공개할 것: HTML / CSS / 브라우저 JS / 이미지 등 정적 자산만.
+
+# 버전 관리 / 에디터 설정
+.git/
+.github/
+
+# Kiro 설정 및 개인 프로젝트 기록(비공개)
+.kiro/
+docs/
+
+# 서버 비밀 / 환경 변수
+.env
+.env.*
+*.env
+
+# 서버리스 함수 소스(공개 정적 폴더로 복사하지 않음; Netlify가 별도 번들링)
+netlify/
+
+# Node 산출물 / 의존성
+node_modules/
+package-lock.json
+
+# 배포 설정 자체(공개할 필요 없음)
+netlify.toml
+.netlifyignore

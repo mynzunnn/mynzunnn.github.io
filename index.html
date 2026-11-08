@@ -74,13 +74,14 @@
 
 <style>
 :root{--bg:#f7f5ef;--ink:#25251f;--muted:#77776c;--green:#526b50;--lime:#d7f36a;--pink:#f1b9a8;--blue:#c7dce9;--line:#deddd2;--white:#fffef9;--radius:24px}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,Pretendard,"Noto Sans KR",system-ui,sans-serif}a{color:inherit;text-decoration:none}button{font:inherit}.wrap{width:min(1100px,calc(100% - 40px));margin:auto}.topbar{height:78px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.logo{font-size:21px;font-weight:950;letter-spacing:-1px}.logo span{color:var(--green)}.nav{display:flex;gap:25px;font-size:13px;font-weight:700;color:var(--muted)}.nav a:hover{color:var(--green)}.hero{padding:78px 0 70px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:55px}.kicker{font-size:11px;font-weight:900;letter-spacing:2px;color:var(--green);text-transform:uppercase}.hero h1{font-size:clamp(48px,7vw,86px);letter-spacing:-5px;line-height:1.02;margin:20px 0 22px}.hero h1 .highlight{position:relative;z-index:0;white-space:nowrap}.hero h1 .highlight:after{content:"";position:absolute;z-index:-1;left:-3px;right:-3px;bottom:5px;height:23px;background:var(--lime);transform:rotate(-1.5deg)}.intro{font-size:17px;line-height:1.9;color:var(--muted);max-width:470px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 19px;border-radius:100px;font-size:13px;font-weight:850;border:1px solid var(--ink);transition:.2s}.btn.primary{background:var(--ink);color:white}.btn:hover{transform:translateY(-3px)}.portrait-card{position:relative;min-height:390px;border-radius:34px;background:var(--blue);overflow:hidden;display:grid;place-items:center}.portrait-card:before{content:"";position:absolute;width:275px;height:275px;border-radius:50%;background:var(--pink);top:42px;left:50%;transform:translateX(-50%)}.sun-sticker{position:absolute;right:24px;top:22px;width:70px;height:70px;border-radius:50%;background:var(--lime);display:grid;place-items:center;font-size:28px;transform:rotate(12deg)}.person{position:relative;z-index:1;width:185px;height:235px;margin-top:90px}.hair{position:absolute;top:0;left:27px;width:132px;height:150px;background:#302820;border-radius:60% 60% 42% 42%}.face{position:absolute;top:35px;left:40px;width:105px;height:130px;border-radius:45% 45% 48% 48%;background:#e7ad88}.face:before,.face:after{content:"";position:absolute;top:55px;width:8px;height:11px;border-radius:50%;background:#302820}.face:before{left:25px}.face:after{right:25px}.smile{position:absolute;top:91px;left:43px;width:22px;height:11px;border-bottom:3px solid #9c4e4b;border-radius:50%}.body-shape{position:absolute;bottom:0;left:8px;width:170px;height:100px;border-radius:70px 70px 10px 10px;background:var(--green)}.caption-sticker{position:absolute;bottom:24px;left:22px;background:var(--white);border:1px solid var(--ink);border-radius:13px;padding:11px 15px;font-size:12px;font-weight:800;transform:rotate(-3deg)}.caption-sticker b{display:block;font-size:17px;margin-top:3px}.side-note{position:absolute;right:20px;bottom:35px;font-size:11px;writing-mode:vertical-rl;letter-spacing:2px;font-weight:800}.section{padding:62px 0;border-top:1px solid var(--line)}.section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:26px}.section-head h2{font-size:clamp(30px,4vw,43px);letter-spacing:-2px;margin:9px 0 0}.section-head p{color:var(--muted);font-size:13px;line-height:1.8;margin:0;max-width:340px}.about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:20px}.note-card{background:var(--lime);border-radius:var(--radius);padding:27px;min-height:220px;display:flex;flex-direction:column;justify-content:space-between}.note-card .big{font-size:37px;line-height:1.15;font-weight:950;letter-spacing:-2px}.note-card .small{font-size:12px;font-weight:800}.about-copy{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:30px}.about-copy h3{font-size:22px;margin:0 0 12px;letter-spacing:-.8px}.about-copy p{color:var(--muted);line-height:1.95;font-size:14px;margin:0}.about-copy p+p{margin-top:14px}.about-copy p strong{font-weight:700;color:var(--ink)}.about-copy a{color:var(--green);text-decoration:underline;text-underline-offset:2px}.about-copy a:hover{color:var(--ink)}.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}.tag{border:1px solid var(--line);background:#fff;border-radius:100px;padding:9px 12px;font-size:12px;font-weight:750}.interest-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.interest{min-height:190px;padding:23px;border-radius:var(--radius);display:flex;flex-direction:column;justify-content:space-between}.interest:nth-child(1){background:var(--pink)}.interest:nth-child(2){background:var(--blue)}.interest:nth-child(3){background:#e5e7d7}.emoji{font-size:35px}.interest h3{font-size:21px;margin:0 0 7px;letter-spacing:-.7px}.interest p{font-size:13px;line-height:1.7;margin:0;max-width:260px;color:#56564e}.project-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.project{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}.project-art{height:180px;display:grid;place-items:center;font-size:55px;background:#e6e9dc}.project:nth-child(2) .project-art{background:#f0d4c7}.project-info{padding:22px}.project-info .label{font-size:10px;letter-spacing:1.5px;color:var(--green);font-weight:900}.project-info h3{font-size:21px;margin:8px 0}.project-info p{font-size:13px;color:var(--muted);line-height:1.8;margin:0}.timeline{display:grid;grid-template-columns:130px 1fr;gap:20px;padding:20px 0;border-top:1px solid var(--line)}.timeline time{font-size:12px;font-weight:900;color:var(--green);padding-top:4px}.timeline h3{font-size:17px;margin:0 0 6px}.timeline p{font-size:13px;line-height:1.8;color:var(--muted);margin:0}.faq-item{border-top:1px solid var(--line);padding:18px 0}.faq-item:first-child{border-top:0;padding-top:0}.faq-item h3{font-size:17px;margin:0 0 8px;letter-spacing:-.5px}.faq-item p{font-size:13px;line-height:1.8;color:var(--muted);margin:0}.contact{background:var(--ink);color:white;border-radius:30px;padding:clamp(28px,5vw,55px);display:grid;grid-template-columns:1fr auto;align-items:end;gap:25px;margin:45px 0}.contact .kicker{color:var(--lime)}.contact h2{font-size:clamp(35px,5vw,58px);letter-spacing:-3px;line-height:1.1;margin:15px 0}.contact p{color:#c6c6bb;font-size:14px;line-height:1.8}.contact-links{display:flex;flex-direction:column;gap:10px;min-width:160px}.contact-links a{border:1px solid #5e5e54;border-radius:100px;padding:13px 16px;font-size:12px;font-weight:800;display:flex;justify-content:space-between;gap:20px}.contact-links a:hover{background:var(--lime);color:var(--ink);border-color:var(--lime)}footer{display:flex;justify-content:space-between;gap:15px;padding:0 0 35px;color:var(--muted);font-size:11px}.edit-hint{background:#fff8d9;border:1px dashed #c5a93b;padding:12px 15px;border-radius:12px;font-size:12px;line-height:1.7;margin:20px 0 0;color:#655728}.skip-link{position:absolute;left:-9999px;top:8px;background:var(--ink);color:#fff;padding:12px 16px;border-radius:0 0 12px 12px;font-size:13px;font-weight:800;z-index:100}.skip-link:focus{left:8px}:focus-visible{outline:3px solid var(--green);outline-offset:3px;border-radius:6px}
-@media(max-width:760px){.wrap{width:min(100% - 30px,560px)}.topbar{height:65px}.nav{gap:12px;font-size:11px}.nav a:nth-child(4){display:none}.hero{grid-template-columns:1fr;gap:30px;padding:52px 0}.hero h1{letter-spacing:-3px}.portrait-card{min-height:330px}.portrait-card:before{width:230px;height:230px}.person{transform:scale(.85);margin-top:80px}.about-grid{grid-template-columns:1fr}.note-card{min-height:160px}.interest-grid{grid-template-columns:1fr}.interest{min-height:150px}.project-grid{grid-template-columns:1fr}.section{padding:45px 0}.section-head{align-items:start;flex-direction:column}.contact{grid-template-columns:1fr;margin:30px 0}.contact-links{flex-direction:row;flex-wrap:wrap}.contact-links a{flex:1;min-width:130px}footer{flex-direction:column}}
+.gb-form{display:grid;grid-template-columns:1fr 1fr;gap:12px;background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:24px}.gb-field{display:flex;flex-direction:column;gap:6px}.gb-field.full{grid-column:1 / -1}.gb-field label{font-size:12px;font-weight:800;color:var(--muted)}.gb-field input,.gb-field textarea{font:inherit;font-size:14px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);resize:vertical}.gb-field input:focus,.gb-field textarea:focus{outline:none;border-color:var(--green)}.gb-actions{grid-column:1 / -1;display:flex;align-items:center;gap:14px;flex-wrap:wrap}.gb-submit{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:100px;font-size:13px;font-weight:850;border:1px solid var(--ink);background:var(--ink);color:#fff;cursor:pointer;transition:.2s}.gb-submit:hover:not(:disabled){transform:translateY(-3px)}.gb-submit:disabled{opacity:.55;cursor:not-allowed}.gb-status{font-size:13px;font-weight:700;line-height:1.6}.gb-status.ok{color:var(--green)}.gb-status.err{color:#b5483f}.gb-list{margin-top:22px;display:flex;flex-direction:column;gap:12px}.gb-entry{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:16px 18px}.gb-entry .gb-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}.gb-entry .gb-name{font-weight:850;font-size:15px}.gb-entry .gb-dest{font-size:12px;font-weight:800;color:var(--green);background:#eef3e7;border-radius:100px;padding:4px 10px}.gb-entry .gb-msg{font-size:14px;line-height:1.75;color:#56564e;margin:8px 0 0}.gb-entry .gb-time{font-size:11px;color:var(--muted)}.gb-empty{color:var(--muted);font-size:13px;padding:8px 0}
+@media(max-width:760px){.wrap{width:min(100% - 30px,560px)}.topbar{height:65px}.nav{gap:12px;font-size:11px}.nav a:nth-child(4){display:none}.gb-form{grid-template-columns:1fr}.hero{grid-template-columns:1fr;gap:30px;padding:52px 0}.hero h1{letter-spacing:-3px}.portrait-card{min-height:330px}.portrait-card:before{width:230px;height:230px}.person{transform:scale(.85);margin-top:80px}.about-grid{grid-template-columns:1fr}.note-card{min-height:160px}.interest-grid{grid-template-columns:1fr}.interest{min-height:150px}.project-grid{grid-template-columns:1fr}.section{padding:45px 0}.section-head{align-items:start;flex-direction:column}.contact{grid-template-columns:1fr;margin:30px 0}.contact-links{flex-direction:row;flex-wrap:wrap}.contact-links a{flex:1;min-width:130px}footer{flex-direction:column}}
 </style>
 </head>
 <body>
 <a class="skip-link" href="#home">본문으로 건너뛰기</a>
 <div class="wrap">
-<header class="topbar"><a class="logo" href="#home">MY<span>PAGE.</span></a><nav class="nav" aria-label="주요 메뉴"><a href="#about">ABOUT</a><a href="#interests">INTERESTS</a><a href="#projects">MY WORK</a><a href="#journey">JOURNEY</a><a href="#contact">CONTACT</a></nav></header>
+<header class="topbar"><a class="logo" href="#home">MY<span>PAGE.</span></a><nav class="nav" aria-label="주요 메뉴"><a href="#about">ABOUT</a><a href="#interests">INTERESTS</a><a href="#projects">MY WORK</a><a href="#journey">JOURNEY</a><a href="#guestbook">GUESTBOOK</a><a href="#contact">CONTACT</a></nav></header>
 <main>
 <section class="hero" id="home"><div><div class="kicker">HELLO, NICE TO MEET YOU! ✳</div><h1>안녕하세요,<br>저는 <span class="highlight">조민준</span>입니다.</h1><p class="intro">국민대학교 경영정보학부에 재학 중인 조민준입니다. 새로운 곳을 여행하며 다양한 경험을 쌓는 것을 좋아해요. 반가워요!</p><div class="actions"><a class="btn primary" href="#about">나를 소개할게요 <span aria-hidden="true">↘</span></a><a class="btn" href="#interests">내 관심사 보기</a></div></div>
 <div class="portrait-card" aria-label="귀여운 일러스트 프로필"><div class="sun-sticker" aria-hidden="true">✳</div><div class="person" aria-hidden="true"><div class="hair"></div><div class="face"><div class="smile"></div></div><div class="body-shape"></div></div><div class="caption-sticker">THIS IS ME!<b>반가워요 :)</b></div><div class="side-note">A LITTLE PAGE ABOUT ME</div></div></section>
@@ -90,9 +91,165 @@
 <section class="section" id="journey"><div class="section-head"><div><div class="kicker">04 / MY JOURNEY</div><h2>나의 작은 기록.</h2></div><p>배우고 경험한 순간들을<br>하나씩 쌓아 가고 있어요.</p></div><div class="timeline"><time>NOW / 요즘</time><div><h3>새로운 것을 배우는 중</h3><p>관심 있는 분야를 알아보고, 직접 시도하면서 나만의 경험을 쌓고 있어요.</p></div></div><div class="timeline"><time>NEXT / 앞으로</time><div><h3>더 많은 곳으로 여행하기</h3><p>다양한 여행지를 방문하고 새로운 문화를 경험하며 나만의 여행 이야기를 만들어 가고 싶습니다.</p></div></div></section>
 <section class="section" id="assignment"><div class="section-head"><div><div class="kicker">05 / ABOUT THIS WEBSITE</div><h2>이 홈페이지는</h2></div><p>수업 과제를 통해 만들고 있는<br>저만의 자기소개 페이지입니다.</p></div><div class="about-copy"><h3>한 번에 완성하지 않고, 조금씩 발전시키기</h3><p>이 홈페이지는 수업 과제로 GitHub Pages에 올린 자기소개 페이지입니다. 한 번에 완성하지 않고 sprint마다 조금씩 발전시킬 예정입니다.</p><div class="tags"><span class="tag"># 수업 과제</span><span class="tag"># GitHub Pages</span><span class="tag"># Sprint</span><span class="tag"># 꾸준한 개선</span></div></div></section>
 <section class="section" id="faq"><div class="section-head"><div><div class="kicker">06 / FAQ</div><h2>자주 묻는 질문</h2></div><p>이 페이지에 대해 궁금할 수 있는<br>질문들을 모아 두었어요.</p></div><div class="about-copy"><div class="faq-item"><h3>조민준은 어느 학교에 다니나요?</h3><p>국민대학교 경영정보학부에 재학 중입니다.</p></div><div class="faq-item"><h3>어떤 것을 좋아하나요?</h3><p>새로운 여행지를 찾고 직접 방문하며 풍경과 문화를 경험하는 것을 좋아합니다. 여행 계획을 세우고 그 과정에서 만나는 순간을 기록하는 것도 즐겨요.</p></div><div class="faq-item"><h3>이 홈페이지는 무엇인가요?</h3><p>수업 과제로 GitHub Pages에 올린 자기소개 페이지로, sprint마다 조금씩 발전시키고 있습니다.</p></div></div></section>
+<section class="section" id="guestbook"><div class="section-head"><div><div class="kicker">07 / GUESTBOOK</div><h2>여행지 추천 방명록.</h2></div><p>가 보고 싶은 곳, 추천하고 싶은 여행지를<br>이름과 한 줄 메시지로 남겨 주세요.</p></div>
+<form class="gb-form" id="gb-form" novalidate>
+<div class="gb-field"><label for="gb-name">이름</label><input type="text" id="gb-name" name="name" maxlength="40" required autocomplete="name" placeholder="예: 조민준"></div>
+<div class="gb-field"><label for="gb-dest">추천 여행지</label><input type="text" id="gb-dest" name="destination" maxlength="60" required placeholder="예: 제주 성산일출봉"></div>
+<div class="gb-field full"><label for="gb-msg">한 줄 메시지</label><textarea id="gb-msg" name="message" maxlength="200" rows="2" required placeholder="이곳을 추천하는 이유를 한 줄로 남겨 주세요."></textarea></div>
+<div class="gb-actions"><button type="submit" class="gb-submit" id="gb-submit">남기기 <span aria-hidden="true">✍</span></button><span class="gb-status" id="gb-status" role="status" aria-live="polite"></span></div>
+</form>
+<div class="gb-list" id="gb-list" aria-live="polite"><p class="gb-empty">불러오는 중...</p></div>
+</section>
 <section class="contact" id="contact"><div><div class="kicker">LET'S SAY HELLO</div><h2>우리, 인사해요! 👋</h2><p>제 소개 페이지에 방문해 주셔서 감사합니다.<br>앞으로도 다양한 경험을 쌓아 가겠습니다.</p></div><div class="contact-links"><a href="https://github.com/mynzunnn" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a><!-- TODO: 아래 주소를 실제 이메일로 교체하세요 --><a href="mailto:your@email.com">이메일 <span aria-hidden="true">↗</span></a><a href="#home">맨 위로 <span aria-hidden="true">↑</span></a></div></section>
 </main>
 <footer><span>© 2026 조민준. Made with care.</span><span>나만의 작은 인터넷 공간 ✳</span></footer>
 </div>
+
+<!-- 방명록: 같은 사이트의 /api 서버 함수로 요청 (브라우저는 Supabase에 직접 붙지 않음) -->
+<script>
+(function () {
+  "use strict";
+  var form = document.getElementById("gb-form");
+  var listEl = document.getElementById("gb-list");
+  var statusEl = document.getElementById("gb-status");
+  var submitBtn = document.getElementById("gb-submit");
+  if (!form || !listEl) return;
+
+  var API_LIST = "/api/guestbook-list";
+  var API_CREATE = "/api/guestbook-create";
+
+  function setStatus(msg, kind) {
+    statusEl.textContent = msg || "";
+    statusEl.className = "gb-status" + (kind ? " " + kind : "");
+  }
+
+  // 사용자 입력은 textContent 로만 넣는다(HTML 로 실행하지 않음) → XSS 방지
+  function entryNode(r) {
+    var art = document.createElement("article");
+    art.className = "gb-entry";
+
+    var top = document.createElement("div");
+    top.className = "gb-top";
+    var name = document.createElement("span");
+    name.className = "gb-name";
+    name.textContent = r.author_name;
+    var dest = document.createElement("span");
+    dest.className = "gb-dest";
+    dest.textContent = "📍 " + r.destination;
+    top.appendChild(name);
+    top.appendChild(dest);
+
+    var msg = document.createElement("p");
+    msg.className = "gb-msg";
+    msg.textContent = r.message;
+
+    var time = document.createElement("div");
+    time.className = "gb-time";
+    time.textContent = formatTime(r.created_at);
+
+    art.appendChild(top);
+    art.appendChild(msg);
+    art.appendChild(time);
+    return art;
+  }
+
+  function formatTime(iso) {
+    try {
+      var d = new Date(iso);
+      return d.toLocaleString("ko-KR", {
+        year: "numeric", month: "2-digit", day: "2-digit",
+        hour: "2-digit", minute: "2-digit"
+      });
+    } catch (e) { return ""; }
+  }
+
+  function renderEntries(rows) {
+    listEl.innerHTML = "";
+    if (!rows || rows.length === 0) {
+      var p = document.createElement("p");
+      p.className = "gb-empty";
+      p.textContent = "아직 남긴 글이 없어요. 첫 글을 남겨 보세요!";
+      listEl.appendChild(p);
+      return;
+    }
+    var frag = document.createDocumentFragment();
+    rows.forEach(function (r) { frag.appendChild(entryNode(r)); });
+    listEl.appendChild(frag);
+  }
+
+  function showListError(msg) {
+    listEl.innerHTML = "";
+    var p = document.createElement("p");
+    p.className = "gb-empty";
+    p.textContent = msg;
+    listEl.appendChild(p);
+  }
+
+  function loadEntries() {
+    fetch(API_LIST, { headers: { "Accept": "application/json" } })
+      .then(function (res) {
+        if (!res.ok) throw new Error("http_" + res.status);
+        return res.json();
+      })
+      .then(function (data) {
+        renderEntries(data.entries);
+      })
+      .catch(function () {
+        showListError("목록을 불러오지 못했어요. 새로고침 해 주세요.");
+      });
+  }
+
+  loadEntries();
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    var name = document.getElementById("gb-name").value.trim();
+    var dest = document.getElementById("gb-dest").value.trim();
+    var msg = document.getElementById("gb-msg").value.trim();
+
+    // 클라이언트 1차 검증(서버에서도 다시 검증함)
+    if (!name || !dest || !msg) {
+      setStatus("이름, 추천 여행지, 메시지를 모두 입력해 주세요.", "err");
+      return;
+    }
+    if (name.length > 40 || dest.length > 60 || msg.length > 200) {
+      setStatus("입력이 너무 길어요. 길이를 줄여 주세요.", "err");
+      return;
+    }
+
+    submitBtn.disabled = true;
+    setStatus("저장 중...", null);
+
+    fetch(API_CREATE, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ author_name: name, destination: dest, message: msg })
+    })
+      .then(function (res) {
+        return res.json().then(function (data) { return { ok: res.ok, data: data }; });
+      })
+      .then(function (r) {
+        if (!r.ok || !r.data || !r.data.entry) {
+          // 실패를 성공처럼 표시하지 않는다
+          setStatus("저장에 실패했어요. 잠시 후 다시 시도해 주세요.", "err");
+          submitBtn.disabled = false;
+          return; // 입력값 유지
+        }
+        // 성공: 맨 위에 추가
+        var empty = listEl.querySelector(".gb-empty");
+        if (empty) listEl.innerHTML = "";
+        listEl.insertBefore(entryNode(r.data.entry), listEl.firstChild);
+        form.reset();
+        setStatus("방명록에 글이 등록됐어요. 고마워요!", "ok");
+        submitBtn.disabled = false;
+      })
+      .catch(function () {
+        setStatus("저장에 실패했어요. 네트워크를 확인해 주세요.", "err");
+        submitBtn.disabled = false;
+      });
+  });
+})();
+</script>
 </body>
 </html>
