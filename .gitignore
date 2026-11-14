@@ -15,5 +15,9 @@ node_modules/
 Thumbs.db
 
 # Kiro 설정 및 개인 프로젝트 기록(공개 저장소에 올리지 않음)
-.kiro/
+# .kiro 안의 모든 것을 무시하되, steering 지침만 예외로 올린다(다른 기기와 공유).
+.kiro/*
+!.kiro/steering/
+.kiro/steering/*
+!.kiro/steering/project-hub.md
 docs/
